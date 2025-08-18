@@ -4,67 +4,76 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Clare Rees-Hales</title>
-
-  <!-- Cinzel Regular only -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=Georgia&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: Georgia, serif;
+      text-align: center;
       margin: 0;
       padding: 0;
-      text-align: center;
-      background: #fff;
+      background-color: white;
+      color: #333;
     }
 
     h1 {
       font-family: 'Cinzel', serif;
-      font-weight: 400; /* Regular, not bold */
-      font-size: clamp(24px, 6vw, 60px); /* Responsive for iPhone + MacBook */
-      margin: 20px 0 10px 0;
+      font-size: clamp(24px, 6vw, 64px);
+      font-weight: 400;
+      margin: 1.5rem 0;
+      font-variant: normal;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
     a {
+      color: #333;
       text-decoration: none;
-      color: black;
-      font-family: Georgia, serif;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .contact {
+      margin-bottom: 2rem;
     }
 
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px 80px; /* more spacing between rows than columns */
-      padding: 40px;
+      gap: 2rem 4rem; /* bigger row spacing than column */
       max-width: 1200px;
-      margin: auto;
+      margin: 0 auto;
+      padding: 0 1rem 3rem;
     }
 
-    .gallery-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    figure {
+      margin: 0;
     }
 
-    .gallery-item img {
+    figure img {
       width: 100%;
       height: auto;
       cursor: pointer;
+      border: 1px solid #ddd;
+      border-radius: 4px;
     }
 
-    .caption {
+    figcaption {
       font-family: Georgia, serif;
       font-size: clamp(12px, 1.2vw, 16px);
-      color: #555;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis; /* neat cutoff if too long */
-      max-width: 100%;
+      color: #666;
+      margin-top: 0.5rem;
+      white-space: nowrap;       /* keep on one line */
+      overflow: hidden;          /* prevent spillover */
+      text-overflow: clip;       /* force shrink instead of cut off */
     }
 
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
       z-index: 1000;
-      padding: 20px;
       left: 0;
       top: 0;
       width: 100%;
@@ -73,96 +82,94 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      padding: 1rem;
     }
 
     .modal img {
-      max-width: 90vw;
-      max-height: 90vh;
-      object-fit: contain; /* always fits fully on screen */
+      max-width: 90%;
+      max-height: 80%;
+      margin-bottom: 1rem;
     }
 
-    .modal-caption {
-      font-family: Georgia, serif;
-      font-size: 16px;
-      margin-top: 10px;
-      color: #555;
-      text-align: center;
-      max-width: 90vw;
+    .modal figcaption {
+      color: #ccc;
+      font-size: clamp(12px, 2vw, 18px);
+      white-space: normal;  /* captions wrap normally in enlarged view */
     }
 
     .close {
       position: absolute;
       top: 20px;
-      right: 30px;
-      color: white;
+      right: 35px;
+      color: #fff;
       font-size: 40px;
+      font-weight: bold;
       cursor: pointer;
     }
   </style>
 </head>
 <body>
-
   <h1>Clare Rees-Hales</h1>
-  <p>
-    <a href="https://www.instagram.com/clarereeshales" target="_blank">Instagram</a> | 
-    <a href="mailto:clare.e.reeshales@gmail.com">Email</a> | 
-    <a href="https://drive.google.com/file/d/19RWWi2EdPfATbwWhUq-IhFLtblRRjKru/view?usp=sharing" target="_blank">CV</a>
-  </p>
+  <div class="contact">
+    <div><a href="https://www.instagram.com/clarereeshales" target="_blank">Instagram</a></div>
+    <div><a href="mailto:clare.e.reeshales@gmail.com">clare.e.reeshales@gmail.com</a></div>
+    <div><a href="https://drive.google.com/file/d/19RWWi2EdPfATbwWhUq-IhFLtblRRjKru/view?usp=sharing" target="_blank">CV</a></div>
+  </div>
 
   <div class="gallery">
-    <div class="gallery-item">
+    <figure>
       <img src="https://i.postimg.cc/wBW8tjBq/Suburban-skin-copy.jpg" alt="Suburban Skin">
-      <div class="caption">Suburban Skin — Oil & acrylic on linen — 152 x 56 cm — 2023</div>
-    </div>
-    <div class="gallery-item">
+      <figcaption>Suburban Skin — Oil & acrylic on linen — 152 x 56 cm — 2023</figcaption>
+    </figure>
+    <figure>
       <img src="https://i.postimg.cc/hv10jfSM/Clare-Rees-Hales-The-couple-s-shared-email-address-copy.jpg" alt="The couple's shared email address">
-      <div class="caption">The couple's shared email address — Oil & acrylic on canvas — 60 x 80 cm — 2021</div>
-    </div>
-    <div class="gallery-item">
+      <figcaption>The couple's shared email address — Oil & acrylic on canvas — 60 x 80 cm — 2021</figcaption>
+    </figure>
+    <figure>
       <img src="https://i.postimg.cc/NGd9g6tS/Dymphna-copy.jpg" alt="Dymphna">
-      <div class="caption">Dymphna — Oil on canvas — 80 x 60 cm — 2021</div>
-    </div>
-    <div class="gallery-item">
+      <figcaption>Dymphna — Oil on canvas — 80 x 60 cm — 2021</figcaption>
+    </figure>
+    <figure>
       <img src="https://i.postimg.cc/50CXpGTC/Sepulchral-Scrolling-copy.jpg" alt="Sepulchral Scrolling">
-      <div class="caption">Sepulchral Scrolling — Oil on wood panel — 13 x 17 cm — 2022</div>
-    </div>
-    <div class="gallery-item">
+      <figcaption>Sepulchral Scrolling — Oil on wood panel — 13 x 17 cm — 2022</figcaption>
+    </figure>
+    <figure>
       <img src="https://i.postimg.cc/t4Nwn4g1/Daddy-s-Little-Girl-copy.jpg" alt="Daddy's Little Girl">
-      <div class="caption">Daddy's Little Girl — Oil on linen — 45 x 55 cm — 2020</div>
-    </div>
-    <div class="gallery-item">
+      <figcaption>Daddy's Little Girl — Oil on linen — 45 x 55 cm — 2020</figcaption>
+    </figure>
+    <figure>
       <img src="https://i.postimg.cc/LX1VfxVy/Susan-copy.jpg" alt="Susan">
-      <div class="caption">Susan — Oil on canvas — 40 x 30 cm — 2021</div>
-    </div>
+      <figcaption>Susan — Oil on canvas — 40 x 30 cm — 2021</figcaption>
+    </figure>
   </div>
 
   <!-- Modal -->
   <div id="myModal" class="modal">
     <span class="close">&times;</span>
     <img id="modalImg" src="" alt="">
-    <div id="modalCaption" class="modal-caption"></div>
+    <figcaption id="modalCaption"></figcaption>
   </div>
 
   <script>
     const modal = document.getElementById("myModal");
     const modalImg = document.getElementById("modalImg");
     const modalCaption = document.getElementById("modalCaption");
-    const closeBtn = document.getElementsByClassName("close")[0];
+    const close = document.getElementsByClassName("close")[0];
 
-    document.querySelectorAll(".gallery-item img").forEach(img => {
-      img.addEventListener("click", function() {
+    document.querySelectorAll(".gallery img").forEach(img => {
+      img.onclick = function() {
         modal.style.display = "flex";
         modalImg.src = this.src;
-        modalCaption.innerHTML = this.nextElementSibling.innerHTML;
-      });
+        modalCaption.textContent = this.nextElementSibling.textContent;
+      }
     });
 
-    closeBtn.onclick = function() {
+    close.onclick = function() {
       modal.style.display = "none";
     }
 
-    window.onclick = function(event) {
-      if (event.target === modal) {
+    modal.onclick = function(e) {
+      if (e.target === modal) {
         modal.style.display = "none";
       }
     }
