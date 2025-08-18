@@ -3,50 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clare Rees-Hales Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&display=swap" rel="stylesheet">
+  <title>Clare Rees-Hales</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=Georgia&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: Georgia, serif;
+      background-color: white;
       margin: 0;
       padding: 20px;
       text-align: center;
-      background-color: white;
     }
 
-    /* Artist name */
-    header h1 {
+    h1 {
       font-family: 'Cinzel', serif;
-      font-weight: normal;
+      font-size: clamp(24px, 8vw, 64px);
       margin-bottom: 10px;
-      text-align: center;
-      white-space: nowrap; 
-      font-size: clamp(20px, 8vw, 48px);
+      white-space: nowrap;
     }
 
-    /* Links (Instagram, Email, CV) */
-    header a {
+    a {
       display: block;
       margin: 5px 0;
-      font-size: 16px;
-      color: #000;
+      color: black;
       text-decoration: none;
+      font-size: 18px;
     }
-    header a:hover {
+
+    a:hover {
       text-decoration: underline;
     }
 
-    /* Gallery layout */
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px 60px; /* row spacing 40px, column spacing 60px */
-      margin-top: 30px;
-      justify-items: center;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 40px 20px; /* row spacing = 40px, column spacing = 20px */
+      margin-top: 40px;
     }
 
     .gallery-item {
-      max-width: 300px;
+      text-align: center;
     }
 
     .gallery-item img {
@@ -57,125 +52,116 @@
       border-radius: 4px;
     }
 
-    /* Captions */
     .caption {
-      font-family: Georgia, serif;
+      margin-top: 8px;
+      font-size: clamp(12px, 1.5vw, 16px);
       color: #666;
-      text-align: center;
-      margin-top: 5px;
       white-space: nowrap;
       overflow: hidden;
-      text-overflow: clip;
-      font-size: clamp(12px, 2vw, 16px);
+      text-overflow: ellipsis;
     }
 
-    /* Modal (enlarged image) */
-    .modal {
+    /* Lightbox */
+    .lightbox {
       display: none;
       position: fixed;
-      z-index: 10;
+      z-index: 1000;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
+      overflow: auto;
       background-color: rgba(0,0,0,0.9);
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
     }
 
-    .modal img {
+    .lightbox-content {
+      margin: 5% auto;
+      display: block;
       max-width: 90%;
-      max-height: 80%;
+      max-height: 80vh;
     }
 
-    .modal .caption {
+    .lightbox-caption {
+      margin: 20px auto;
+      font-size: clamp(14px, 2vw, 18px);
       color: #ccc;
-      margin-top: 10px;
-      font-size: clamp(12px, 2vw, 16px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .close {
       position: absolute;
       top: 20px;
-      right: 30px;
+      right: 40px;
       color: white;
-      font-size: 30px;
+      font-size: 40px;
       font-weight: bold;
       cursor: pointer;
-    }
-
-    @media (max-width: 600px) {
-      .gallery {
-        grid-template-columns: 1fr;
-      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>CLARE REES-HALES</h1>
-    <a href="https://www.instagram.com/clarereeshales" target="_blank">Instagram</a>
-    <a href="mailto:clare.e.reeshales@gmail.com">clare.e.reeshales@gmail.com</a>
-    <a href="https://drive.google.com/file/d/19RWWi2EdPfATbwWhUq-IhFLtblRRjKru/view?usp=sharing" target="_blank">CV</a>
-  </header>
+
+  <h1>CLARE REES-HALES</h1>
+  <a href="https://www.instagram.com/clarereeshales" target="_blank">Instagram</a>
+  <a href="mailto:clare.e.reeshales@gmail.com">clare.e.reeshales@gmail.com</a>
+  <a href="https://drive.google.com/file/d/19RWWi2EdPfATbwWhUq-IhFLtblRRjKru/view?usp=sharing" target="_blank">CV</a>
 
   <div class="gallery">
     <div class="gallery-item">
-      <img src="https://i.postimg.cc/wBW8tjBq/Suburban-skin-copy.jpg" alt="Suburban Skin">
+      <img src="https://i.postimg.cc/wBW8tjBq/Suburban-skin-copy.jpg" alt="Suburban Skin"
+           onclick="openLightbox(this, 'Suburban Skin — Oil & acrylic on linen — 152 x 56 cm — 2023')">
       <div class="caption">Suburban Skin — Oil & acrylic on linen — 152 x 56 cm — 2023</div>
     </div>
+
     <div class="gallery-item">
-      <img src="https://i.postimg.cc/hv10jfSM/Clare-Rees-Hales-The-couple-s-shared-email-address-copy.jpg" alt="The couple's shared email address">
+      <img src="https://i.postimg.cc/hv10jfSM/Clare-Rees-Hales-The-couple-s-shared-email-address-copy.jpg" alt="The couple's shared email address"
+           onclick="openLightbox(this, 'The couple&apos;s shared email address — Oil & acrylic on canvas — 60 x 80 cm — 2021')">
       <div class="caption">The couple's shared email address — Oil & acrylic on canvas — 60 x 80 cm — 2021</div>
     </div>
+
     <div class="gallery-item">
-      <img src="https://i.postimg.cc/NGd9g6tS/Dymphna-copy.jpg" alt="Dymphna">
+      <img src="https://i.postimg.cc/NGd9g6tS/Dymphna-copy.jpg" alt="Dymphna"
+           onclick="openLightbox(this, 'Dymphna — Oil on canvas — 80 x 60 cm — 2021')">
       <div class="caption">Dymphna — Oil on canvas — 80 x 60 cm — 2021</div>
     </div>
+
     <div class="gallery-item">
-      <img src="https://i.postimg.cc/50CXpGTC/Sepulchral-Scrolling-copy.jpg" alt="Sepulchral Scrolling">
+      <img src="https://i.postimg.cc/50CXpGTC/Sepulchral-Scrolling-copy.jpg" alt="Sepulchral Scrolling"
+           onclick="openLightbox(this, 'Sepulchral Scrolling — Oil on wood panel — 13 x 17 cm — 2022')">
       <div class="caption">Sepulchral Scrolling — Oil on wood panel — 13 x 17 cm — 2022</div>
     </div>
+
     <div class="gallery-item">
-      <img src="https://i.postimg.cc/t4Nwn4g1/Daddy-s-Little-Girl-copy.jpg" alt="Daddy's Little Girl">
+      <img src="https://i.postimg.cc/t4Nwn4g1/Daddy-s-Little-Girl-copy.jpg" alt="Daddy's Little Girl"
+           onclick="openLightbox(this, 'Daddy&apos;s Little Girl — Oil on linen — 45 x 55 cm — 2020')">
       <div class="caption">Daddy's Little Girl — Oil on linen — 45 x 55 cm — 2020</div>
     </div>
+
     <div class="gallery-item">
-      <img src="https://i.postimg.cc/LX1VfxVy/Susan-copy.jpg" alt="Susan">
+      <img src="https://i.postimg.cc/LX1VfxVy/Susan-copy.jpg" alt="Susan"
+           onclick="openLightbox(this, 'Susan — Oil on canvas — 40 x 30 cm — 2021')">
       <div class="caption">Susan — Oil on canvas — 40 x 30 cm — 2021</div>
     </div>
   </div>
 
-  <!-- Modal -->
-  <div class="modal" id="modal">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <img id="modal-img" src="" alt="">
-    <div class="caption" id="modal-caption"></div>
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
   </div>
 
   <script>
-    const modal = document.getElementById("modal");
-    const modalImg = document.getElementById("modal-img");
-    const modalCaption = document.getElementById("modal-caption");
-
-    document.querySelectorAll(".gallery-item img").forEach(img => {
-      img.addEventListener("click", () => {
-        modal.style.display = "flex";
-        modalImg.src = img.src;
-        modalCaption.textContent = img.nextElementSibling.textContent;
-      });
-    });
-
-    function closeModal() {
-      modal.style.display = "none";
+    function openLightbox(img, caption) {
+      document.getElementById("lightbox").style.display = "block";
+      document.getElementById("lightbox-img").src = img.src;
+      document.getElementById("lightbox-caption").innerHTML = caption;
     }
 
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) {
-        closeModal();
-      }
-    });
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
   </script>
 </body>
 </html>
